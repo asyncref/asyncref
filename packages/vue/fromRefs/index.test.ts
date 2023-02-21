@@ -1,0 +1,3 @@
+describe.todo('fromPromise', () => {
+  // todo
+})

@@ -1,0 +1,30 @@
+﻿{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "module": "ESNext",
+    "target": "ESNext",
+    "lib": ["DOM", "ESNext"],
+    "esModuleInterop": true,
+    "jsx": "preserve",
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "noUnusedLocals": false,
+    "allowJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "types": [
+      "vitest",
+      "vite/client",
+    ],
+    "declaration": true,
+    "paths": {
+      "@asyncref/core/*": ["packages/core/*"],
+      "@asyncref/vue/*": ["packages/vue/*"],
+      "@vue-utilities/*": ["packages/vue/utilities/*"],
+    }
+  },
+  "exclude": [
+    "dist", 
+    "node_modules"
+  ]
+}

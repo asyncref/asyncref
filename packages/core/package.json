@@ -1,0 +1,17 @@
+{
+  "name": "@asyncref/core",
+  "version": "0.1.1",
+  "author": "Tomas Durica",
+  "license": "ISC",
+  "description": "",
+  "keywords": [],
+  "module": "./index.mjs",
+  "types": "./index.d.mts",
+  "exports": {
+    ".": {
+      "types": "./index.d.mts",
+      "import": "./index.mjs"
+    },
+    "./*": "./*"
+  }
+}
