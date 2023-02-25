@@ -1,4 +1,4 @@
-﻿import { rollup } from 'rollup'
+import { rollup } from 'rollup'
 import AutoImport from 'unplugin-auto-import/rollup'
 import ts from 'rollup-plugin-ts'
 

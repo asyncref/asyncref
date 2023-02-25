@@ -1,4 +1,4 @@
-﻿import fs from 'fs'
+import fs from 'fs'
 
 export const mapObjectValues = <T, U>(obj: Record<string, T>, fn: (value: T, key: string) => U): Record<string, U> => {
   if (!obj) {

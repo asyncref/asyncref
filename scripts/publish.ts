@@ -1,4 +1,4 @@
-﻿import { execSync } from 'child_process'
+import { execSync } from 'child_process'
 import { packages } from '../packages'
 
 type Pkg = typeof packages[number]
@@ -22,7 +22,9 @@ const publish = async () => {
   console.log('[publish] Publish started')
 
   execSync('pnpm run clean', { stdio: 'inherit' })
+  execSync('pnpm run lint', { stdio: 'inherit' })
   execSync('pnpm run test', { stdio: 'inherit' })
+
   execSync('pnpm run build', { stdio: 'inherit' })
 
   for (const pkg of packages) {

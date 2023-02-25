@@ -1,4 +1,4 @@
-﻿import { deleteAsync } from 'del'
+import { deleteAsync } from 'del'
 
 const clean = async () => {
   console.log('[clean] Starting clean')
