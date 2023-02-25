@@ -1,1 +1,1 @@
-﻿export { fromQuery } from './fromQuery'
+export { fromQuery } from './fromQuery'

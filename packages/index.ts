@@ -1,4 +1,4 @@
-﻿export const packages = [{
+export const packages = [{
   name: '@asyncref/core',
   path: 'packages\\core'
 }, {

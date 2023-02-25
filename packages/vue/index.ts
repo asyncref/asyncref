@@ -1,4 +1,4 @@
-﻿export type { AsyncRef, UnwrapState, UnwrapData, UnwrapError } from './asyncRef'
+export type { AsyncRef, UnwrapState, UnwrapData, UnwrapError } from './asyncRef'
 
 export { asyncRef } from './asyncRef'
 export { compose } from './compose'

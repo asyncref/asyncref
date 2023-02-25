@@ -1,4 +1,4 @@
-﻿export type { LoadingState, ResolvedState, RejectedState, AsyncState, UnwrapStateData, UnwrapStateError } from './asyncState'
+export type { LoadingState, ResolvedState, RejectedState, AsyncState, UnwrapStateData, UnwrapStateError } from './asyncState'
 export type { Matcher } from './match'
 
 export { loadingState, resolvedState, rejectedState, isLoading, isResolved, isRejected } from './asyncState'

@@ -1,4 +1,4 @@
-﻿import { AsyncRef, asyncRef } from '../asyncRef'
+import { AsyncRef, asyncRef } from '../asyncRef'
 import { isLoading, isRejected, isResolved } from '@asyncref/core'
 
 export const asyncRefRejected = <TData, TError>(error: TError) => {

@@ -1,4 +1,4 @@
-﻿type ExtendFn = <TTarget, TFunctions extends Record<string, unknown>>(
+type ExtendFn = <TTarget, TFunctions extends Record<string, unknown>>(
   target: TTarget,
   functions: TFunctions
 ) => asserts target is TTarget & TFunctions
