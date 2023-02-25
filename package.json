@@ -1,16 +1,17 @@
 {
   "name": "@asyncref/asyncref",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "main": "index.js",
   "module": "dist/asyncref.mjs",
   "scripts": {
     "test": "vitest --run",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint .",
+    "lint": "eslint --ext .ts .",
     "build": "npx tsx scripts/build.ts",
+    "clean": "npx tsx scripts/clean.ts",
     "publish": "npx tsx scripts/publish.ts",
-    "clean": "npx tsx scripts/clean.ts"
+    "release": "npx tsx scripts/release.ts"
   },
   "keywords": [],
   "author": "Tomas Durica",
@@ -20,6 +21,7 @@
     "@asyncref/vue": "workspace:*",
     "@vue/eslint-config-typescript": "^11.0.2",
     "@vue/test-utils": "^2.3.0",
+    "bumpp": "^9.0.0",
     "del": "^7.0.0",
     "eslint": "^8.34.0",
     "eslint-plugin-import": "^2.27.5",
