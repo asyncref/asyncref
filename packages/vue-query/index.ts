@@ -1,1 +1,0 @@
-export { fromQuery } from './fromQuery'
