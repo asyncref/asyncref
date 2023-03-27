@@ -1,5 +1,5 @@
 {
-  "name": "@asyncref/core",
+  "name": "@asyncref/vue",
   "version": "0.2.0",
   "author": "Tomas Durica",
   "license": "ISC",
@@ -13,5 +13,16 @@
       "import": "./index.mjs"
     },
     "./*": "./*"
+  },
+  "peerDependencies": {
+    "vue": ">=3.0.0",
+    "@tanstack/vue-query": ">=4.13.0"
+  },
+  "dependencies": {
+    "@asyncref/core": "workspace:*"
+  },
+  "devDependencies": {
+    "vue": "^3.2.47",
+    "@tanstack/vue-query": "^4.27.0"
   }
 }
