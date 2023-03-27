@@ -1,6 +1,5 @@
-import { AsyncRef, asyncRef } from '../asyncRef'
-import { compose } from '.'
 import { expectLoading, expectResolved } from '../utilities/testUtilities'
+import { AsyncRef, asyncRef, useCompose } from '@asyncref/vue'
 
 describe('test', () => {
   describe('reactivity', () => {
@@ -8,7 +7,7 @@ describe('test', () => {
       const a = asyncRef<number>()
       const b = asyncRef<string>()
 
-      const ref = compose([a, b], ([aValue, bValue]) => `${aValue} ${bValue}`)
+      const ref = useCompose([a, b], ([aValue, bValue]) => `${aValue} ${bValue}`)
       const result = computed(() => ref.value)
 
       expectLoading(result)
@@ -33,7 +32,7 @@ describe('test', () => {
       const a = asyncRef<Data1>()
       const b = asyncRef<Data2>()
 
-      compose([a, b], ([aValue, bValue]) => {
+      useCompose([a, b], ([aValue, bValue]) => {
         expectTypeOf(aValue).toEqualTypeOf<Data1>()
         expectTypeOf(bValue).toEqualTypeOf<Data2>()
 
@@ -52,7 +51,7 @@ describe('test', () => {
       const a = asyncRef<Data, Error1>()
       const b = asyncRef<Data, Error2>()
 
-      const result = compose([a, b], () => undefined as Data)
+      const result = useCompose([a, b], () => undefined as Data)
 
       expectTypeOf(result).toMatchTypeOf<AsyncRef<Data, Error1 | Error2>>()
     })

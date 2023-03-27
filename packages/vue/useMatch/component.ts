@@ -4,7 +4,7 @@ type MatchProps<TData, TError> = {
   state: AsyncState<TData, TError>
 }
 
-export const Match = <TData, TError>(props: MatchProps<TData, TError>, { slots }) => {
+export const UseMatch = <TData, TError>(props: MatchProps<TData, TError>, { slots }) => {
   const { state } = props
 
   return match(state, {

@@ -3,7 +3,7 @@ import { expectTypeOf } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { nextTick } from 'vue'
 
-import { AsyncRef, asyncRef, match, Match } from '@asyncref/vue'
+import { AsyncRef, asyncRef, useMatch, UseMatch } from '@asyncref/vue'
 
 describe('match', () => {
   describe('return type', () => {
@@ -16,7 +16,7 @@ describe('match', () => {
 
       const ref = asyncRef<Data, Error>()
 
-      const result = match(ref, {
+      const result = useMatch(ref, {
         loading: () => undefined as WhenLoading,
         data: () => undefined as WhenData,
         error: () => undefined as WhenError
@@ -68,7 +68,7 @@ describe('match', () => {
 })
 
 const mountMatch = <TData, TError>(state: AsyncRef<TData, TError>) => {
-  return mount(Match, {
+  return mount(UseMatch, {
     props: {
       state: unref(state)
     },

@@ -1,5 +1,4 @@
-import { AsyncRef, asyncRef } from '../asyncRef'
-import { map } from '.'
+import { AsyncRef, asyncRef, useMap } from '@asyncref/vue'
 import { expectTypeOf } from 'vitest'
 
 describe('map', () => {
@@ -11,7 +10,7 @@ describe('map', () => {
 
       const ref = asyncRef<DataIn, Error>()
 
-      const result = map(ref, () => undefined as DataOut)
+      const result = useMap(ref, () => undefined as DataOut)
 
       expectTypeOf(result).toMatchTypeOf<AsyncRef<DataOut, Error>>()
     })
