@@ -38,7 +38,7 @@ describe('match', () => {
     })
 
     describe('when resolved', () => {
-      it('renders data slot', async () => {
+      it('renders default slot', async () => {
         const ref = asyncRef<string, string>()
 
         ref.resolve('resolved')
@@ -74,13 +74,13 @@ const mountMatch = <TData, TError>(state: AsyncRef<TData, TError>) => {
     },
     slots: {
       loading: 'loading',
-      data: `
-        <template #data="{ data }">
+      default: `
+        <template #default="data">
           <div>{{ data }}</div>
         </template>
       `,
       error: `
-        <template #error="{ error }">
+        <template #error="error">
           <div>{{ error }}</div>
         </template>
       `

@@ -9,7 +9,7 @@ export const UseMatch = <TData, TError>(props: MatchProps<TData, TError>, { slot
 
   return match(state, {
     loading: () => slots.loading?.(),
-    data: (data) => slots.data?.({ data }),
-    error: (error) => slots.error?.({ error })
+    data: (data) => slots.default?.(data) ?? slots.data?.(data),
+    error: (error) => slots.error?.(error)
   })
 }
