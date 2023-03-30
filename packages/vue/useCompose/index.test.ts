@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { describe, it, expectTypeOf } from 'vitest'
 import { expectLoading, expectResolved } from '../utilities/testUtilities'
 import { asyncRef } from '../asyncRef'
+import { useMap } from '../useMap'
 import { useCompose } from '.'
 
 describe('test', () => {
@@ -41,6 +42,25 @@ describe('test', () => {
         expectTypeOf(bValue).toEqualTypeOf<Data2>()
 
         return undefined as Data
+      })
+    })
+
+    describe('when called with mapped functions', () => {
+      it('should be called with correctly inferred types', () => {
+        type DataA = 'data1'
+        type DataB = 'data2'
+        type DataC = 'data2'
+
+        const a = asyncRef(undefined as DataA)
+        const b = useMap(a, (aValue) => aValue as DataB)
+        const c = asyncRef(undefined as DataC)
+
+        useCompose([b, c], ([bValue, cValue]) => {
+          expectTypeOf(bValue).toEqualTypeOf<DataB>()
+          expectTypeOf(cValue).toEqualTypeOf<DataC>()
+
+          return undefined
+        })
       })
     })
   })

@@ -1,6 +1,7 @@
 import type { AsyncState } from '../asyncState'
 import { describe, it, expect, expectTypeOf } from 'vitest'
 import { isLoading, isRejected, isResolved, loadingState, rejectedState, resolvedState } from '../asyncState'
+import { map } from '../map'
 import { compose } from '.'
 
 describe('compose', () => {
@@ -50,6 +51,19 @@ describe('compose', () => {
     })
   })
 
+  describe('when called with mapped functions', () => {
+    it('should return resolved state', () => {
+      const a = resolvedState('a')
+      const a2 = map(a, (aValue) => `${aValue}2`)
+      const b = resolvedState('b')
+
+      const result = compose([a2, b], ([aValue, bValue]) => `${aValue} ${bValue}`)
+
+      expect(isResolved(result)).toBe(true)
+      expect(result).toHaveProperty('data', 'a2 b')
+    })
+  })
+
   describe('compose function', () => {
     it('should be called with correctly inferred types', () => {
       type Data1 = 'data1'
@@ -65,6 +79,25 @@ describe('compose', () => {
         expectTypeOf(bValue).toEqualTypeOf<Data2>()
 
         return undefined as Data
+      })
+    })
+
+    describe('when called with mapped functions', () => {
+      it('should be called with correctly inferred types', () => {
+        type DataA = 'data1'
+        type DataB = 'data2'
+        type DataC = 'data2'
+
+        const a = resolvedState(undefined as DataA)
+        const b = map(a, (aValue) => aValue as DataB)
+        const c = resolvedState(undefined as DataC)
+
+        compose([b, c], ([bValue, cValue]) => {
+          expectTypeOf(bValue).toEqualTypeOf<DataB>()
+          expectTypeOf(cValue).toEqualTypeOf<DataC>()
+
+          return undefined
+        })
       })
     })
   })

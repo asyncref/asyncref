@@ -1,4 +1,5 @@
-import { describe, it, expect } from 'vitest'
+import type { AsyncState, UnwrapStateData } from '../asyncState'
+import { describe, it, test, expect, expectTypeOf } from 'vitest'
 import { loadingState, resolvedState, rejectedState, isLoading, isResolved, isRejected } from '../asyncState'
 
 describe('loadingState', () => {
@@ -100,5 +101,15 @@ describe('rejectedState', () => {
     const state = rejectedState(error)
 
     expect(state).toHaveProperty('error', error)
+  })
+
+  describe('UnwrapStateData', () => {
+    it('should unwrap async state', () => {
+      type Data = 'Data'
+      const state = undefined as AsyncState<Data, unknown>
+
+      type Unwrapped = UnwrapStateData<typeof state>
+      expectTypeOf<Unwrapped>().toEqualTypeOf<Data>()
+    })
   })
 })

@@ -1,7 +1,7 @@
 import type { AsyncState, RejectedState, UnwrapStateData, UnwrapStateError } from '../asyncState'
 import { isLoading, isRejected, isResolved, resolvedState } from '../asyncState'
 
-type UnwrapStateArrayData<TStates> = {
+type UnwrapStateArrayData<TStates extends ReadonlyArray<AsyncState<unknown, unknown>>> = {
   [K in keyof TStates ]: UnwrapStateData<TStates[K]>
 }
 

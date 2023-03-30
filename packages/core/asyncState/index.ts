@@ -16,5 +16,5 @@ export const isLoading = <TData, TError>(value: AsyncState<TData, TError>): valu
 export const isResolved = <TData, TError>(value: AsyncState<TData, TError>): value is ResolvedState<TData> => !value.isLoading && 'data' in value
 export const isRejected = <TData, TError>(value: AsyncState<TData, TError>): value is RejectedState<TError> => !value.isLoading && 'error' in value
 
-export type UnwrapStateData<TState> = TState extends AsyncState<infer TData, unknown> ? TData : never
-export type UnwrapStateError<TState> = TState extends AsyncState<unknown, infer TData> ? TData : never
+export type UnwrapStateData<TState> = TState extends ResolvedState<infer TData> ? TData : never
+export type UnwrapStateError<TState> = TState extends RejectedState<infer TData> ? TData : never
