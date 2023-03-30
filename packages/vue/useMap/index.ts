@@ -1,4 +1,5 @@
 import type { AsyncRef } from '../asyncRef'
+import { unref, computed } from 'vue'
 import { map } from '@asyncref/core'
 
 export const useMap = <TDataIn, TDataOut, TError>(

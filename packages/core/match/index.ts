@@ -1,4 +1,5 @@
-import { AsyncState, isLoading, isRejected, isResolved } from '../asyncState'
+import type { AsyncState } from '../asyncState'
+import { isLoading, isRejected, isResolved } from '../asyncState'
 
 export type Matcher<TData, TError, TWhenLoading, TWhenResolved, TWhenRejected> = {
   loading: () => TWhenLoading;

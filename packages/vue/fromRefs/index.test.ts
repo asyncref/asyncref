@@ -1,5 +1,7 @@
-import { fromRefs } from '@asyncref/vue'
+import { ref } from 'vue'
+import { describe, it } from 'vitest'
 import { expectLoading, expectRejected, expectResolved } from '@vue-utilities/testUtilities'
+import { fromRefs } from '.'
 
 describe('fromRefs', () => {
   describe('loadingState', () => {

@@ -1,4 +1,5 @@
 import type { Ref } from 'vue'
+import { computed } from 'vue'
 import { loadingState, rejectedState, resolvedState } from '@asyncref/core'
 import { extend } from '../utilities/extend'
 

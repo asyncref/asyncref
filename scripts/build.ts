@@ -1,5 +1,4 @@
 import { rollup } from 'rollup'
-import AutoImport from 'unplugin-auto-import/rollup'
 import ts from 'rollup-plugin-ts'
 
 import { mapObjectValues, PackageJson, readJson, writeJson } from './utilities'
@@ -20,10 +19,6 @@ const bundlePackage = async (pkg: Pkg) => {
       '@asyncref/core'
     ],
     plugins: [
-      AutoImport({
-        imports: ['vue'],
-        dts: false
-      }),
       ts()
     ]
   })

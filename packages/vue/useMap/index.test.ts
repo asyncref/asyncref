@@ -1,5 +1,7 @@
-import { AsyncRef, asyncRef, useMap } from '@asyncref/vue'
-import { expectTypeOf } from 'vitest'
+import type { AsyncRef } from '../asyncRef'
+import { describe, it, expectTypeOf } from 'vitest'
+import { asyncRef } from '../asyncRef'
+import { useMap } from '.'
 
 describe('map', () => {
   describe('return type', () => {

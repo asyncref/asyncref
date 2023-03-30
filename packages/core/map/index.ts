@@ -1,4 +1,5 @@
-import { AsyncState, isResolved, resolvedState } from '../asyncState'
+import type { AsyncState } from '../asyncState'
+import { isResolved, resolvedState } from '../asyncState'
 
 export const map = <TDataIn, TDataOut, TError>(
   state: AsyncState<TDataIn, TError>,

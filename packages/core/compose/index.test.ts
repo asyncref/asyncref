@@ -1,4 +1,5 @@
 import type { AsyncState } from '../asyncState'
+import { describe, it, expect, expectTypeOf } from 'vitest'
 import { isLoading, isRejected, isResolved, loadingState, rejectedState, resolvedState } from '../asyncState'
 import { compose } from '.'
 

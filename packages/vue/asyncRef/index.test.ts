@@ -1,6 +1,7 @@
 import type { AsyncRef } from '.'
-import { asyncRef } from '.'
+import { describe, it, expectTypeOf } from 'vitest'
 import { asyncRefRejected, expectLoading, expectRejected, expectResolved } from '../utilities/testUtilities'
+import { asyncRef } from '.'
 
 describe('asyncRef', () => {
   describe('when called', () => {

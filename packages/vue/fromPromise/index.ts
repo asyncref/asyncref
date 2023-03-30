@@ -1,4 +1,6 @@
-import { asyncRef, AsyncRef } from '../asyncRef'
+import type { AsyncRef } from '../asyncRef'
+import { watchEffect, computed } from 'vue'
+import { asyncRef } from '../asyncRef'
 
 export const fromPromise = <TData, TError = unknown>(
   fn: (options: { signal: AbortSignal }) => Promise<TData>

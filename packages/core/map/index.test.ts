@@ -1,4 +1,5 @@
 import { isLoading, isRejected, isResolved, loadingState, rejectedState, resolvedState } from '../asyncState'
+import { describe, it, vi, expect } from 'vitest'
 import { map } from '.'
 
 describe('map', () => {

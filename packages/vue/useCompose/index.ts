@@ -1,5 +1,6 @@
 import type { AsyncRef, UnwrapData, UnwrapError } from '../asyncRef'
 import type { AsyncState } from '@asyncref/core'
+import { unref, computed } from 'vue'
 import { compose } from '@asyncref/core'
 
 type UnwrapRefArrayData<TRefs extends ReadonlyArray<AsyncRef<unknown, unknown>>> = {

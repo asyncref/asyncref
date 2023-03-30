@@ -1,5 +1,9 @@
+import type { AsyncRef } from '../asyncRef'
+import { computed } from 'vue'
+import { describe, it, expectTypeOf } from 'vitest'
 import { expectLoading, expectResolved } from '../utilities/testUtilities'
-import { AsyncRef, asyncRef, useCompose } from '@asyncref/vue'
+import { asyncRef } from '../asyncRef'
+import { useCompose } from '.'
 
 describe('test', () => {
   describe('reactivity', () => {

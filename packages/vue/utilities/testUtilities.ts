@@ -1,7 +1,11 @@
-import { AsyncRef, asyncRef } from '../asyncRef'
+import type { AsyncRef } from '../asyncRef'
+import { unref } from 'vue'
+import { expect } from 'vitest'
 import { isLoading, isRejected, isResolved } from '@asyncref/core'
+import { asyncRef } from '../asyncRef'
 
 export const asyncRefRejected = <TData, TError>(error: TError) => {
+  // eslint-disable-next-line no-undef
   const ref = asyncRef<TData, TError>()
 
   ref.reject(error)

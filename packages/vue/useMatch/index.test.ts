@@ -1,9 +1,11 @@
 import type { Ref } from 'vue'
-import { expectTypeOf } from 'vitest'
+import type { AsyncRef } from '../asyncRef'
 import { mount } from '@vue/test-utils'
-import { nextTick } from 'vue'
-
-import { AsyncRef, asyncRef, useMatch, UseMatch } from '@asyncref/vue'
+import { nextTick, unref } from 'vue'
+import { describe, it, expect, expectTypeOf } from 'vitest'
+import { asyncRef } from '../asyncRef'
+import { UseMatch } from './component'
+import { useMatch } from '.'
 
 describe('match', () => {
   describe('return type', () => {

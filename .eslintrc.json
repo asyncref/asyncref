@@ -4,7 +4,6 @@
     "eslint:recommended",
     "plugin:vue/vue3-recommended",
     "@vue/eslint-config-typescript/recommended",
-    "./.eslintrc-auto-import.json",
     "./.eslintrc-standard.json"
   ],
   "rules": {

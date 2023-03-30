@@ -1,5 +1,7 @@
-import { AsyncRef, asyncRef, useMapError } from '@asyncref/vue'
-import { expectTypeOf } from 'vitest'
+import type { AsyncRef } from '../asyncRef'
+import { describe, it, expectTypeOf } from 'vitest'
+import { asyncRef } from '../asyncRef'
+import { useMapError } from '.'
 
 describe('map', () => {
   describe('return type', () => {

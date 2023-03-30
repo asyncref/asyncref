@@ -1,6 +1,6 @@
-import { match } from '.'
+import { describe, it, vi, expect, expectTypeOf } from 'vitest'
 import { loadingState, rejectedState, resolvedState } from '../asyncState'
-import { expectTypeOf } from 'vitest'
+import { match } from '.'
 
 type WhenLoading = 'loading'
 type WhenData = 'data'

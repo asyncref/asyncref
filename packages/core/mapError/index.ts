@@ -1,4 +1,5 @@
-import { AsyncState, isRejected, rejectedState } from '../asyncState'
+import type { AsyncState } from '../asyncState'
+import { isRejected, rejectedState } from '../asyncState'
 
 export const mapError = <TData, TErrorIn, TErrorOut>(
   state: AsyncState<TData, TErrorIn>,

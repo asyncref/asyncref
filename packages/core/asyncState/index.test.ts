@@ -1,4 +1,5 @@
-import { loadingState, resolvedState, rejectedState, isLoading, isResolved, isRejected } from '.'
+import { describe, it, expect } from 'vitest'
+import { loadingState, resolvedState, rejectedState, isLoading, isResolved, isRejected } from '../asyncState'
 
 describe('loadingState', () => {
   describe('isLoading', () => {

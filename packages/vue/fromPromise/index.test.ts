@@ -1,6 +1,8 @@
-import { fromPromise } from '.'
-import { AsyncRef } from '../asyncRef'
+import type { AsyncRef } from '../asyncRef'
+import { nextTick, ref } from 'vue'
+import { describe, it, vi, expect, expectTypeOf } from 'vitest'
 import { expectLoading, expectRejected, expectResolved } from '../utilities/testUtilities'
+import { fromPromise } from '.'
 
 describe('fromPromise', () => {
   describe('when function returns an unresolved promise', () => {
