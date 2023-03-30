@@ -13,7 +13,16 @@ export type UnwrapState<TRef> = TRef extends Ref<infer TState>
     : never
   : never
 
-export const asyncRef = <TData, TError = Error>(...args: [] | [TData]) => {
+type AsyncRefControls<TData, TError> = {
+  reset: () => void,
+  resolve: (data: TData) => void,
+  reject: (error: TError) => void
+}
+
+export const asyncRef = <
+  TData,
+  TError = Error
+>(...args: [] | [TData]): AsyncRef<TData, TError> & AsyncRefControls<TData, TError> => {
   const state = ref<AsyncState<TData, TError>>(
     args.length ? resolvedState(args[0]) : loadingState()
   ) as Ref<AsyncState<TData, TError>>

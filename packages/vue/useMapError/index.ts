@@ -5,4 +5,4 @@ import { unref, computed } from 'vue'
 export const useMapError = <TData, TErrorIn, TErrorOut>(
   state: AsyncRef<TData, TErrorIn>,
   projection: (data: TErrorIn) => TErrorOut
-) => computed(() => mapError(unref(state), projection))
+): AsyncRef<TData, TErrorOut> => computed(() => mapError(unref(state), projection))

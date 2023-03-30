@@ -4,7 +4,7 @@ import { asyncRef } from '../asyncRef'
 
 export const fromPromise = <TData, TError = unknown>(
   fn: (options: { signal: AbortSignal }) => Promise<TData>
-) => {
+): AsyncRef<TData, TError> => {
   const ref = asyncRef<TData, TError>()
 
   let controller: AbortController

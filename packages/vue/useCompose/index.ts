@@ -14,4 +14,6 @@ type UnwrapRefArrayErrors<TRefs extends ReadonlyArray<AsyncRef<unknown, unknown>
 export const useCompose = <TRefs extends Array<AsyncRef<unknown, unknown>>, TData>(
   refs: [...TRefs],
   fn: (values: UnwrapRefArrayData<TRefs>) => TData
-) => computed(() => compose(refs.map(r => unref(r)), fn) as AsyncState<TData, UnwrapRefArrayErrors<TRefs>[number]>)
+): AsyncRef<TData, UnwrapRefArrayErrors<TRefs>[number]> => {
+  return computed(() => compose(refs.map(r => unref(r)), fn) as AsyncState<TData, UnwrapRefArrayErrors<TRefs>[number]>)
+}
