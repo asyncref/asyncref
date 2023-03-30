@@ -8,9 +8,9 @@ describe('fromRefs', () => {
     it('should be created when isLoading is true', () => {
       const refs = createRefs(true, false, 'resolved', 'rejected')
 
-      const ref = fromRefs(refs)
+      const result = fromRefs(refs)
 
-      expectLoading(ref)
+      expectLoading(result)
     })
   })
 
@@ -18,9 +18,9 @@ describe('fromRefs', () => {
     it('should be created when isLoading is false and isError is false', () => {
       const refs = createRefs(false, false, 'resolved', 'rejected')
 
-      const ref = fromRefs(refs)
+      const result = fromRefs(refs)
 
-      expectResolved(ref).with('resolved')
+      expectResolved(result).with('resolved')
     })
   })
 
@@ -28,14 +28,14 @@ describe('fromRefs', () => {
     it('should be created when isLoading is false and isError is true', () => {
       const refs = createRefs(false, true, 'resolved', 'rejected')
 
-      const ref = fromRefs(refs)
+      const result = fromRefs(refs)
 
-      expectRejected(ref).with('rejected')
+      expectRejected(result).with('rejected')
     })
   })
 })
 
-const createRefs = <TData, TError = string>(isLoading: boolean, isError: boolean, data: TData, error: TError) => {
+const createRefs = <TData, TError>(isLoading: boolean, isError: boolean, data: TData, error: TError) => {
   return {
     isLoading: ref(isLoading),
     isError: ref(isError),

@@ -3,14 +3,18 @@ import { computed } from 'vue'
 import { loadingState, rejectedState, resolvedState } from '@asyncref/core'
 import { extend } from '../utilities/extend'
 
-type Refs<TData, TError> = {
+type Refs = {
   isLoading: Ref<boolean>,
   isError: Ref<boolean>,
-  data: Ref<TData | undefined>,
-  error: Ref<TError | undefined>
+  data: Ref<unknown>,
+  error: Ref<unknown>
 }
 
-export const fromRefs = <TData, TError, TRefs extends Refs<TData, TError>>(refs: TRefs) => {
+export const fromRefs = <
+  TRefs extends Refs,
+  TData = TRefs['data'] extends Ref<infer D | undefined> ? D : never,
+  TError = TRefs['error'] extends Ref<infer E | undefined> ? E : never,
+>(refs: TRefs) => {
   const { isLoading, isError, data, error } = refs
 
   const result = computed(() => {
@@ -19,10 +23,10 @@ export const fromRefs = <TData, TError, TRefs extends Refs<TData, TError>>(refs:
     }
 
     if (isError.value) {
-      return rejectedState(error.value)
+      return rejectedState(error.value as TError)
     }
 
-    return resolvedState(data.value)
+    return resolvedState(data.value as TData)
   })
 
   extend(result, { raw: refs })
