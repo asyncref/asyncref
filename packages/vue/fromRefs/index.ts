@@ -13,8 +13,8 @@ type Refs = {
 
 export const fromRefs = <
   TRefs extends Refs,
-  TData = TRefs['data'] extends Ref<infer D | undefined> ? D : never,
-  TError = TRefs['error'] extends Ref<infer E | undefined> ? E : never,
+  TData = TRefs['data'] extends Ref<infer Data | undefined> ? Exclude<Data, undefined> : never,
+  TError = TRefs['error'] extends Ref<infer Error | undefined> ? Exclude<Error, undefined> : never,
 >(refs: TRefs): AsyncRef<TData, TError> => {
   const { isLoading, isError, data, error } = refs
 
