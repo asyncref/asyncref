@@ -116,10 +116,10 @@ The Vue component that reduces the boilerplate of using useMatch with components
     <template #loading>
       Loading...
     </template>
-    <template #resolved="{ data }">
+    <template #default="{ data }">
       {{ data }}
     </template>
-    <template #rejected="{ error }">
+    <template #error="{ error }">
       {{ error.message }}
     </template>
   </UseMatch>
