@@ -96,11 +96,11 @@ The asyncRef finalizer that allows you to return a value based on matched state.
 const a = asyncRef('Hello')
 const b = useMatch(a, {
   loading: () => 'Loading...',
-  resolved: (aValue) => {
+  data: (aValue) => {
     // type of aValue is inferred from the asyncRef
     return `${aValue} World`
   },
-  rejected: (aError) => {
+  error: (aError) => {
     // type of aError is inferred from the asyncRef
     return new Error(`Error: ${aError.message}`)
   }
