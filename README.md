@@ -126,6 +126,17 @@ The Vue component that reduces the boilerplate of using useMatch with components
 </template>
 ```
 
+### useValue
+The asyncRef finalizer that returns either a value or undefined based on the state of the asyncRef.
+
+```ts
+const a = asyncRef('Hello')
+const aValue = useValue(a) // 'Hello'
+
+const b = asyncRef()
+const bValue = useValue(b) // undefined
+```
+
 ## Installation
 
 ```sh
