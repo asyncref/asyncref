@@ -1,6 +1,5 @@
 import { AsyncState, match } from '@asyncref/core'
-import { defineComponent } from 'vue'
-import type { SetupContext, SlotsType, VNode } from 'vue'
+import type { VNode } from 'vue'
 
 type UseMatchProps<TData, TError> = {
   state: AsyncState<TData, TError>
