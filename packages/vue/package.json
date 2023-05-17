@@ -15,12 +15,12 @@
     "./*": "./*"
   },
   "peerDependencies": {
-    "vue": ">=3.0.0"
+    "vue": ">=3.3.0"
   },
   "dependencies": {
     "@asyncref/core": "workspace:*"
   },
   "devDependencies": {
-    "vue": "^3.2.47"
+    "vue": "^3.3.2"
   }
 }

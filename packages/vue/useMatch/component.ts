@@ -1,7 +1,8 @@
 import { AsyncState, match } from '@asyncref/core'
-import type { VNode } from 'vue'
+import { defineComponent } from 'vue'
+import type { SetupContext, SlotsType, VNode } from 'vue'
 
-type MatchProps<TData, TError> = {
+type UseMatchProps<TData, TError> = {
   state: AsyncState<TData, TError>
 }
 
@@ -12,10 +13,11 @@ type UseMatchSlots<TData, TError> = {
   default?: (data: TData) => VNode[]
 }
 
-export const UseMatch = <TData, TError>(props: MatchProps<TData, TError>, { slots }: { slots: UseMatchSlots<TData, TError> }) => {
-  const { state } = props
-
-  return match(state, {
+export const UseMatch = <TData, TError = unknown>(
+  props: UseMatchProps<TData, TError>,
+  { slots }: { slots: UseMatchSlots<TData, TError> }
+) => {
+  return match(props.state, {
     loading: () => slots.loading?.(),
     data: (data) => slots.default?.(data) ?? slots.data?.(data),
     error: (error) => slots.error?.(error)
