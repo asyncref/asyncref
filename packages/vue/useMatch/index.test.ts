@@ -35,7 +35,7 @@ describe('match', () => {
 
         const wrapper = mountMatch(ref)
 
-        expect(wrapper.text()).toEqual('loading')
+        expect(wrapper.text()).toEqual('Loading')
       })
     })
 
@@ -49,7 +49,7 @@ describe('match', () => {
 
         await nextTick()
 
-        expect(wrapper.text()).toEqual('resolved')
+        expect(wrapper.text()).toEqual('Data: resolved')
       })
     })
 
@@ -63,7 +63,7 @@ describe('match', () => {
 
         await nextTick()
 
-        expect(wrapper.text()).toEqual('rejected')
+        expect(wrapper.text()).toEqual('Error: rejected')
       })
     })
   })
@@ -75,15 +75,15 @@ const mountMatch = <TData, TError>(state: AsyncRef<TData, TError>) => {
       state: unref(state)
     },
     slots: {
-      loading: 'loading',
+      loading: 'Loading',
       default: `
         <template #default="data">
-          <div>{{ data }}</div>
+          <div>Data: {{ data }}</div>
         </template>
       `,
       error: `
         <template #error="error">
-          <div>{{ error }}</div>
+          <div>Error: {{ error }}</div>
         </template>
       `
     }

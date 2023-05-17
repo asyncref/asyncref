@@ -11,6 +11,7 @@ describe('fromRefs', () => {
 
         const result = fromRefs(createRefs(false, false, 'data' as Data | undefined, 'rejected' as const))
 
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         expectTypeOf<UnwrapData<typeof result>>().not.toEqualTypeOf<any>()
         expectTypeOf<UnwrapData<typeof result>>().not.toEqualTypeOf<unknown>()
         expectTypeOf<UnwrapData<typeof result>>().toEqualTypeOf<Data>()
@@ -29,6 +30,7 @@ describe('fromRefs', () => {
 
         const result = fromRefs(refs)
 
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         expectTypeOf<UnwrapData<typeof result>>().not.toEqualTypeOf<any>()
         expectTypeOf<UnwrapData<typeof result>>().not.toEqualTypeOf<unknown>()
         expectTypeOf<UnwrapData<typeof result>>().toEqualTypeOf<Data>()
