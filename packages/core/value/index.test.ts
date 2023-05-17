@@ -1,4 +1,4 @@
-import { describe, it, vi, expect, expectTypeOf } from 'vitest'
+import { describe, it, expect } from 'vitest'
 import { loadingState, rejectedState, resolvedState } from '../asyncState'
 import { value } from '.'
 

@@ -23,5 +23,5 @@ export const match = <TData, TError, TWhenLoading, TWhenResolved, TWhenRejected>
     return error(state.error)
   }
 
-  throw new Error('Invalid state')
+  throw new Error(`Invalid state: '${JSON.stringify(state)}'`)
 }
