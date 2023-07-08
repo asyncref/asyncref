@@ -1,6 +1,6 @@
 {
   "name": "@asyncref/asyncref",
-  "version": "0.2.9",
+  "version": "0.2.10",
   "description": "",
   "main": "index.js",
   "module": "dist/asyncref.mjs",
