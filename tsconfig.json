@@ -1,5 +1,6 @@
 ﻿{
   "compilerOptions": {
+    "strict": true,
     "baseUrl": ".",
     "module": "ESNext",
     "target": "ESNext",
@@ -14,17 +15,17 @@
     "forceConsistentCasingInFileNames": true,
     "types": [
       "vitest",
-      "vite/client",
+      "vite/client"
     ],
     "declaration": true,
     "paths": {
       "@asyncref/core/*": ["packages/core/*"],
       "@asyncref/vue/*": ["packages/vue/*"],
-      "@vue-utilities/*": ["packages/vue/utilities/*"],
+      "@vue-utilities/*": ["packages/vue/utilities/*"]
     }
   },
   "exclude": [
-    "dist", 
+    "dist",
     "node_modules"
   ]
 }

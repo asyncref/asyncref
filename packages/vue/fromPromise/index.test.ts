@@ -1,7 +1,7 @@
 import type { AsyncRef } from '../asyncRef'
 import { nextTick, ref } from 'vue'
 import { describe, it, vi, expect, expectTypeOf } from 'vitest'
-import { expectLoading, expectRejected, expectResolved } from '../utilities/testUtilities'
+import { expectLoading, expectRejected, expectResolved, mockPromise } from '../utilities/testUtilities'
 import { fromPromise } from '.'
 
 describe('fromPromise', () => {
@@ -114,25 +114,9 @@ describe('fromPromise', () => {
     it('is AsyncRef with Data from promise and unknown Error', () => {
       type Data = 'data'
 
-      const result = fromPromise(() => Promise.resolve(undefined as Data))
+      const result = fromPromise(() => Promise.resolve(undefined as unknown as Data))
 
       expectTypeOf(result).toMatchTypeOf<AsyncRef<Data, unknown>>()
     })
   })
 })
-
-const mockPromise = <TData>() => {
-  let resolve: (value: TData) => void
-  let reject: (reason?: unknown) => void
-
-  const promise = new Promise<TData>((_resolve, _reject) => {
-    resolve = _resolve
-    reject = _reject
-  })
-
-  return {
-    promise,
-    resolve,
-    reject
-  }
-}

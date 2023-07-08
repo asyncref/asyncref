@@ -2,10 +2,10 @@ import type { AsyncRef } from '../asyncRef'
 import { watchEffect, computed } from 'vue'
 import { asyncRef } from '../asyncRef'
 
-export const fromPromise = <TData, TError = unknown>(
+export const fromPromise = <TData>(
   fn: (options: { signal: AbortSignal }) => Promise<TData>
-): AsyncRef<TData, TError> => {
-  const ref = asyncRef<TData, TError>()
+): AsyncRef<TData, unknown> => {
+  const ref = asyncRef<TData, unknown>()
 
   let controller: AbortController
 
@@ -32,5 +32,5 @@ export const fromPromise = <TData, TError = unknown>(
     }
   })
 
-  return computed(() => ref.value) as AsyncRef<TData, TError>
+  return computed(() => ref.value) as AsyncRef<TData, unknown>
 }

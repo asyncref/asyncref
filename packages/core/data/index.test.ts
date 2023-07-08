@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { loadingState, rejectedState, resolvedState } from '../asyncState'
-import { value } from '.'
+import { data } from '.'
 
 describe('value', () => {
   describe('loadingState', () => {
@@ -8,7 +8,7 @@ describe('value', () => {
       it('should return undefined', () => {
         const state = loadingState()
 
-        expect(value(state)).toBeUndefined()
+        expect(data(state)).toBeUndefined()
       })
     })
 
@@ -16,7 +16,7 @@ describe('value', () => {
       it('should return default value', () => {
         const state = loadingState()
 
-        expect(value(state, 'default')).toBe('default')
+        expect(data(state, 'default')).toBe('default')
       })
     })
   })
@@ -26,7 +26,7 @@ describe('value', () => {
       it('should return value', () => {
         const state = resolvedState('value')
 
-        expect(value(state)).toBe('value')
+        expect(data(state)).toBe('value')
       })
     })
 
@@ -34,7 +34,7 @@ describe('value', () => {
       it('should return value', () => {
         const state = resolvedState('value')
 
-        expect(value(state, 'defaultValue')).toBe('value')
+        expect(data(state, 'defaultValue')).toBe('value')
       })
     })
   })
@@ -44,7 +44,7 @@ describe('value', () => {
       it('should return undefined', () => {
         const state = rejectedState('error')
 
-        expect(value(state)).toBeUndefined()
+        expect(data(state)).toBeUndefined()
       })
     })
 
@@ -52,7 +52,7 @@ describe('value', () => {
       it('should return default value', () => {
         const state = rejectedState('error')
 
-        expect(value(state, 'default')).toBe('default')
+        expect(data(state, 'default')).toBe('default')
       })
     })
   })

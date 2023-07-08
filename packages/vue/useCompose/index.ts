@@ -7,13 +7,13 @@ type UnwrapRefArrayData<TRefs extends ReadonlyArray<AsyncRef<unknown, unknown>>>
   [K in keyof TRefs ]: UnwrapData<TRefs[K]>
 }
 
-type UnwrapRefArrayErrors<TRefs extends ReadonlyArray<AsyncRef<unknown, unknown>>> = {
+type FlattenRefArrayErrors<TRefs extends ReadonlyArray<AsyncRef<unknown, unknown>>> = {
   [K in keyof TRefs ]: UnwrapError<TRefs[K]>
-}
+}[number]
 
 export const useCompose = <TRefs extends Array<AsyncRef<unknown, unknown>>, TData>(
   refs: [...TRefs],
   fn: (values: UnwrapRefArrayData<TRefs>) => TData
-): AsyncRef<TData, UnwrapRefArrayErrors<TRefs>[number]> => {
-  return computed(() => compose(refs.map(r => unref(r)), fn) as AsyncState<TData, UnwrapRefArrayErrors<TRefs>[number]>)
+): AsyncRef<TData, FlattenRefArrayErrors<TRefs>> => {
+  return computed(() => compose(refs.map(r => unref(r)), fn as (data: unknown[]) => TData) as AsyncState<TData, FlattenRefArrayErrors<TRefs>>)
 }

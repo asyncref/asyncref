@@ -2,7 +2,7 @@ import type { Ref } from 'vue'
 import { describe, it, expectTypeOf } from 'vitest'
 import { ref } from 'vue'
 import { asyncRef } from '../asyncRef'
-import { useValue } from '.'
+import { useData } from '.'
 
 describe('useValue', () => {
   describe('return type', () => {
@@ -13,7 +13,7 @@ describe('useValue', () => {
 
         const state = asyncRef<Data, Error>()
 
-        const result = useValue(state)
+        const result = useData(state)
 
         expectTypeOf(result).toMatchTypeOf<Ref<Data | undefined>>()
       })
@@ -27,7 +27,7 @@ describe('useValue', () => {
 
         const state = asyncRef<Data, Error>()
 
-        const result = useValue(state, 'default' as Default)
+        const result = useData(state, 'default' as Default)
 
         expectTypeOf(result).toMatchTypeOf<Ref<Data | Default>>()
       })
@@ -42,7 +42,7 @@ describe('useValue', () => {
         const state = asyncRef<Data, Error>()
         const defaultRef = ref<Default>('default')
 
-        const result = useValue(state, defaultRef)
+        const result = useData(state, defaultRef)
 
         expectTypeOf(result).toMatchTypeOf<Ref<Data | Default>>()
       })

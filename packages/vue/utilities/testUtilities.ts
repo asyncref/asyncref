@@ -32,3 +32,19 @@ export const expectRejected = <TData, TError>(ref: AsyncRef<TData, TError>) => {
     with: (error: TError) => expect(unref(ref)).toHaveProperty('error', error)
   }
 }
+
+export const mockPromise = <TData>() => {
+  let resolve: (value: TData) => void = () => undefined
+  let reject: (reason?: unknown) => void = () => undefined
+
+  const promise = new Promise<TData>((_resolve, _reject) => {
+    resolve = _resolve
+    reject = _reject
+  })
+
+  return {
+    promise,
+    resolve,
+    reject
+  }
+}
