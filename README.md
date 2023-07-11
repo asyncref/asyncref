@@ -54,6 +54,14 @@ Allows you to convert a set of refs into an asyncRef. The result will be
 - in rejected state when `isLoading` ref is false and `isError` is true with an error from `error` ref
 - in resolved state when `isLoading` ref is false and `isError` is false with a value from `data` ref
 
+### toData
+Allows you to quickly access the data value from an asyncRef. Effectively it is a shorthand for `toValue(useData((asyncRef))`.
+
+### toPromise
+Allows you to access the asyncRef data in a promise-like fashion. 
+The returned promise will resolve with the data value and reject with an error value based on state.
+If the asyncRef will be in a loading state, the promise will be pending until the state changes.
+
 ### useCompose
 Allows you to compose multiple asyncRefs into a single one. The result will be in resolved state when all of the asyncRefs are in resolved state, or in rejected state when at least one of the asyncRefs is in rejected state.
 
@@ -126,15 +134,16 @@ The Vue component that reduces the boilerplate of using useMatch with components
 </template>
 ```
 
-### useValue
-The asyncRef finalizer that returns either a value or undefined based on the state of the asyncRef.
+### useData
+The asyncRef finalizer that returns either a value or default value based on the state of the asyncRef.
 
 ```ts
-const a = asyncRef('Hello')
-const aValue = useValue(a) // 'Hello'
+const resolved = asyncRef('Hello')
+const resolvedValue = useData(resolved) // 'Hello'
 
-const b = asyncRef()
-const bValue = useValue(b) // undefined
+const loading = asyncRef()
+const loadingValue = useData(loading) // undefined
+const loadingValueDefault = useData(loading, 'default') // 'default'
 ```
 
 ## Installation
