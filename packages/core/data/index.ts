@@ -5,6 +5,3 @@ export const data = <TData, TError, TDefault>(
   state: AsyncState<TData, TError>,
   defaultValue?: TDefault
 ) => isResolved(state) ? state.data : defaultValue as TData | TDefault
-
-/** @deprecated('`value` is deprecated, use `data` instead') */
-export const value = data

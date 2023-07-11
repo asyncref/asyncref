@@ -12,6 +12,3 @@ export const useData = <TData, TError, TDefault = undefined>(
   ref: AsyncRef<TData, TError>,
   defaultValue?: MaybeRefOrGetter<TDefault>
 ): ComputedRef<TData | TDefault> => computed(() => toData(ref, defaultValue))
-
-/** @deprecated('`useValue` is deprecated, use `useData` instead') */
-export const useValue = useData
